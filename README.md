@@ -1,10 +1,10 @@
 
-# Code Tool
+# Warning Tool
 
 Provides Code Blocks for the [Editor.js](https://editorjs.io).
 
-![image](https://user-images.githubusercontent.com/6184465/64905642-0a125b80-d70e-11e9-875f-5240815e6290.png)
 
+![image](https://user-images.githubusercontent.com/6184465/65211450-5a543980-dad1-11e9-9539-c39145a55fca.png)
 
 ## Installation
 
@@ -13,13 +13,13 @@ Provides Code Blocks for the [Editor.js](https://editorjs.io).
 Get the package
 
 ```shell
-npm i --save-dev @groupher/editor-code
+npm i --save-dev @groupher/editor-warning
 ```
 
 Include module at your application
 
 ```javascript
-const Code = require('@groupher/editor-code');
+const Warning = require('@groupher/editor-warning');
 ```
 
 ### Download to your project's source dir
@@ -37,7 +37,7 @@ var editor = EditorJS({
   
   tools: {
     ...
-    code: Code,
+    warning: Warning,
   },
   
   ...
@@ -48,16 +48,16 @@ var editor = EditorJS({
 
 | Field     | Type     | Description          |
 | --------- | -------- | -------------------- |
-| text      | `string` | code's text         |
-| lang   | `string` | code's language |
+| title      | `string` | warning title         |
+| desc  | `string` | warning desc |
 
 
 ```json
 {
     "type" : "quote",
     "data" : {
-        "text" : ""body {  color: tomato;  margin-left: 20px;};",
-        "lang" : "css"
+        "title" : ""note",
+        "desc" : "this is a warning"
     }
 }
 ```
