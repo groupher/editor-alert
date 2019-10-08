@@ -55,7 +55,7 @@ class Warning {
    * @returns {string}
    */
   static get DEFAULT_TITLE_PLACEHOLDER() {
-    return 'Title';
+    return this.i18n === 'en' ? 'Title': '标题';
   }
 
   /**
@@ -65,7 +65,7 @@ class Warning {
    * @returns {string}
    */
   static get DEFAULT_MESSAGE_PLACEHOLDER() {
-    return 'Message';
+    return this.i18n === 'en' ? 'Message': '描述信息';
   }
 
   /**
