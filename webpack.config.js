@@ -8,26 +8,33 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-            query: {
-              presets: [ '@babel/preset-env' ],
-            },
           },
-        ]
+        ],
       },
       {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('postcss-nested-ancestors'),
+                require('postcss-nested'),
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js',
     library: 'Warning',
-    libraryTarget: 'umd'
-  }
-};
+    libraryTarget: 'umd',
+    libraryExport: 'default',
+  },
+}
