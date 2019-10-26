@@ -99,8 +99,8 @@ class Warning {
     this.messagePlaceholder = config.messagePlaceholder || Warning.DEFAULT_MESSAGE_PLACEHOLDER;
 
     this.data = {
-      title: data.title || '',
-      message: data.message || ''
+      title: data.title || this.titlePlaceholder,
+      message: data.message || this.messagePlaceholder
     };
   }
 
@@ -115,13 +115,14 @@ class Warning {
       value: this.data.title || "警告"
     });
     // textarea 会有各种问题，比如 backspace 会回到上一个 block, 比如 autosize 等等
-    const message = this._make('code', [this.CSS.messageInput, this.CSS.message], {
+    const message = this._make('code', [this.CSS.baseClass, this.CSS.messageInput, this.CSS.message], {
       contentEditable: true,
-      innerHTML: this.data.message,
     });
 
-    title.dataset.placeholder = this.titlePlaceholder;
-    message.dataset.placeholder = this.messagePlaceholder;
+    message.innerText = this.data.message
+
+    // title.dataset.placeholder = this.titlePlaceholder;
+    // message.dataset.placeholder = this.messagePlaceholder;
 
     container.appendChild(title);
     container.appendChild(message);
@@ -138,6 +139,9 @@ class Warning {
   save(warningElement) {
     const title = warningElement.querySelector(`.${this.CSS.title}`);
     const message = warningElement.querySelector(`.${this.CSS.message}`);
+
+    console.log('save title: ', title)
+    console.log('save message: ', message)
 
     return Object.assign(this.data, {
       title: title.innerHTML,
