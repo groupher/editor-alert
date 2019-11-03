@@ -1,10 +1,10 @@
 .cdx-warning {
   position: relative;
-  position: relative;
   margin-top: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   height: auto;
-  min-height: 70px;
+  min-height: 60px;
+  padding-top: 12px;
 }
 
 .cdx-warning [contentEditable=true][data-placeholder]::before{
@@ -34,7 +34,7 @@
   height: 16px;
   position: absolute;
   left: -26px;
-  top: 13px;
+  top: 10px;
 }
 
 @media all and (max-width: 735px) {
@@ -52,8 +52,8 @@
 }
 
 .cdx-warning__title_input {
+  position: absolute;
   border-radius: 3px;
-  padding: 4px 12px;
   outline: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -65,8 +65,7 @@
   width: 30%;
   height: 32px;
   z-index: 1;
-  position: absolute;
-  top: 5px;
+  top: 4px;
   min-width: 30%;
   max-width: 60%;
   overflow: hidden;
@@ -74,7 +73,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  margin-top: -4px;
   font-variant: tabular-nums;
   list-style: none;
   -webkit-font-feature-settings: 'tnum';
@@ -89,16 +88,14 @@
 }
 
 .cdx-warning__message_input {
+  display: block;
   font-size: 15px;
   border-radius: 5px;
   outline: none;
   width: 100%;
   box-sizing: border-box;
   background: #fff9ef;
-  position: absolute;
-  top: 20px;
   color: #807971;
   padding: 30px 12px;
   padding-bottom: 10px;
-  overflow: auto;
 }

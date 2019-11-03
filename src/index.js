@@ -119,7 +119,8 @@ export default class Warning {
    * @returns {Element}
    */
   render() {
-    const container = this._make('div', [this.CSS.baseClass, this.CSS.wrapper])
+    // const container = this._make('div', [this.CSS.baseClass, this.CSS.wrapper])
+    const container = this._make('div', [this.CSS.wrapper], {})
     const title = this._make('input', [this.CSS.titleInput, this.CSS.title], {
       value: this.data.title || '警告',
     })
