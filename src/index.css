@@ -43,7 +43,7 @@
   }
 }
 
-.cdx-warning__message {
+.cdx-warning__desc {
   min-height: 60px;
 }
 
@@ -87,9 +87,10 @@
   transition: all .3s;
 }
 
-.cdx-warning__message_input {
+.cdx-warning__desc_input {
   display: block;
-  font-size: 15px;
+  line-height: 1.6;
+  font-size: 14px;
   border-radius: 5px;
   outline: none;
   width: 100%;
