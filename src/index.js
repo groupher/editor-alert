@@ -4,6 +4,10 @@
 
 import "./index.css";
 
+import WarningIcon from './icon/warning_icon.svg'
+import ErrorIcon from './icon/error_icon.svg'
+import SuccessIcon from './icon/success_icon.svg'
+
 import {
   checkInlineMarkdownSyntax,
   ANCHOR,
@@ -84,6 +88,9 @@ export default class Warning {
     return {
       baseClass: this.api.styles.block,
       wrapper: "cdx-warning",
+      customSettingWrapper: 'custom-setting-wrapper',
+      settingsButton: 'cdx-settings-button',
+      settingsButtonActive: this.api.styles.settingsButtonActive,
       title: "cdx-warning__title",
       titleInput: "cdx-warning__title_input",
       descInput: "cdx-warning__desc_input",
@@ -108,9 +115,28 @@ export default class Warning {
     this.titleEl = null;
     this.descEl = null;
 
+    this.settings = [
+      {
+        title: '警告提示',
+        icon: WarningIcon,
+        type: 'warning',
+      },
+      {
+        title: '错误/禁止提示',
+        icon: ErrorIcon,
+        type: 'error',
+      },
+      {
+        title: '成功提示',
+        icon: SuccessIcon,
+        type: 'success',
+      },
+    ]
+
     this.data = {
       title: data.title || this.defaultTitle,
-      desc: data.desc || this.defaultDesc
+      desc: data.desc || this.defaultDesc,
+      type: data.type || 'warning',
     };
   }
 
@@ -147,6 +173,45 @@ export default class Warning {
     container.appendChild(this.descEl);
 
     return container;
+  }
+
+    /**
+   * editor or go to origin site when edit
+   * @public
+   *
+   * @return {Element}
+   */
+  renderSettings() {
+    if(R.isEmpty(this.data.provider)) return this._make('DIV', '')
+
+    const Wrapper = this._make('DIV', [this.CSS.customSettingWrapper], {})
+
+    this.settings.forEach((item) => {
+      const itemEl = this._make('div', [this.CSS.settingsButton], {
+        title: item.title,
+        innerHTML: item.icon
+      });
+
+      if (this.data.type === item.type) this.highlightSettingIcon(itemEl)
+
+      // itemEl.addEventListener('click', () => {
+      //   this.setCenterIcon(item.name);
+      //   this.highlightSettingIcon(itemEl)
+      // });
+
+      Wrapper.appendChild(itemEl);
+    });
+
+    return Wrapper
+  }
+
+  highlightSettingIcon(el) {
+    if (el.parentNode) {
+      const buttons = el.parentNode.querySelectorAll('.' + this.CSS.settingsButton);
+      Array.from(buttons).forEach( button => button.classList.remove(this.CSS.settingsButtonActive));
+    }
+
+    el.classList.add(this.CSS.settingsButtonActive);
   }
 
   /**
