@@ -37,7 +37,7 @@ module.exports = {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js',
-    library: 'Warning',
+    library: 'Alert',
     libraryTarget: 'umd',
     libraryExport: 'default',
   },

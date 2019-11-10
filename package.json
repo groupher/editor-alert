@@ -1,5 +1,5 @@
 {
-  "name": "@groupher/editor-warning",
+  "name": "@groupher/editor-alert",
   "version": "1.0.15",
   "keywords": [
     "codex editor",
@@ -8,9 +8,9 @@
     "editor.js",
     "editorjs"
   ],
-  "description": "warning Tool for Editor.js",
+  "description": "alert Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/groupher/editor-warning",
+  "repository": "https://github.com/groupher/editor-alert",
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",

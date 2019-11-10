@@ -118,3 +118,8 @@ export const selectNode = function(node) {
     console.warn('Could not select text in node: Unsupported browser.')
   }
 }
+
+export const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
