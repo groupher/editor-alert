@@ -66,20 +66,20 @@
 
 .cdx-alert__title_input--warning {
   background: #ffeed2;
-  color: #9a9289;
+  color: #ce954e;
   border: 1px solid #ffeed2;
 }
 
 .cdx-alert__title_input--error {
   background: #ffdfd9;
   border: 1px solid #ffdfd9;
-  color: #9a9289;
+  color: #e66d5f;
 }
 
 .cdx-alert__title_input--success {
   background: #ecf7d7;
   border: 1px solid #ecf7d7;
-  color: #9a9289;
+  color: #7aad79;
 }
 
 .cdx-alert__title_input {
@@ -117,17 +117,17 @@
 
 .cdx-alert__desc_input--warning {
   background: #fff9ef;
-  color: #807971;
+  color: #cea46f;
 }
 
 .cdx-alert__desc_input--error {
   background: #fff3f1;
-  color: #807971;
+  color: #d28e86;
 }
 
 .cdx-alert__desc_input--success {
   background: #f8fded;
-  color: #807971;
+  color: #85a785;
 }
 
 .cdx-alert__desc_input {

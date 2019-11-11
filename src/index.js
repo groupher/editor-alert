@@ -67,7 +67,7 @@ export default class Alert {
    * @returns {string}
    */
   static get DEFAULT_TITLE_PLACEHOLDER() {
-    return this.i18n === "en" ? "Title" : "警告标题";
+    return this.i18n === "en" ? "Title" : "提示信息标题";
   }
 
   /**
@@ -77,7 +77,7 @@ export default class Alert {
    * @returns {string}
    */
   static get DEFAULT_DESC_PLACEHOLDER() {
-    return this.i18n === "en" ? "Desc" : "警告描述信息";
+    return this.i18n === "en" ? "Desc" : "提示描述信息";
   }
 
   /**
