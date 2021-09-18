@@ -177,7 +177,7 @@ export default class Alert {
       [this.CSS.titleInput, this.CSS[`titleInput${typeName}`], this.CSS.title],
       {
         value: this.data.title,
-        placeholder: "提示标题",
+        placeholder: "//提示标题",
         "data-skip-plus-button": true,
       }
     );
@@ -193,7 +193,7 @@ export default class Alert {
       {
         contentEditable: true,
         innerText: this.data.desc,
-        "data-placeholder": "提示内容",
+        "data-placeholder": "//提示内容",
         "data-skip-plus-button": true,
       }
     );
