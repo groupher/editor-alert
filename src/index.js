@@ -8,7 +8,11 @@ import WarningIcon from "./icon/warning_icon.svg";
 import ErrorIcon from "./icon/error_icon.svg";
 import SuccessIcon from "./icon/success_icon.svg";
 
-import { make, insertHtmlAtCaret } from "@groupher/editor-utils";
+import {
+  make,
+  enableCtrlEnterBreak,
+  addBreakHint,
+} from "@groupher/editor-utils";
 
 import { capitalize } from "./utils";
 
@@ -223,6 +227,9 @@ export default class Alert {
     this.containerEl.appendChild(this.titleEl);
     this.containerEl.appendChild(this.descEl);
     this.containerEl.appendChild(this.sideIcon);
+
+    enableCtrlEnterBreak(this.containerEl, this.api);
+    addBreakHint(this.containerEl, { right: "12px", bottom: "-18px" });
 
     return this.containerEl;
   }

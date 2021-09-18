@@ -148,3 +148,7 @@
   width: 17px;
   height: 17px;
 }
+
+.cdx-alert:focus-within .cdx-ctrlbreak-hint {
+  opacity: 1;
+}

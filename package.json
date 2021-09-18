@@ -42,6 +42,6 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "@groupher/editor-utils": "^0.2.25"
+    "@groupher/editor-utils": "^0.2.54"
   }
 }
