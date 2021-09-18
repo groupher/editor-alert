@@ -73,17 +73,14 @@
 }
 
 .cdx-alert__title_input--warning {
-  /* background: #ffeed2; */
   color: #ce954e;
 }
 
 .cdx-alert__title_input--error {
   color: #fd9b8b;
-  /* background: #ffdfd9; */
 }
 
 .cdx-alert__title_input--success {
-  /* background: #ecf7d7; */
   color: #7aad79;
 }
 
@@ -100,10 +97,10 @@
   list-style: none;
   font-feature-settings: "tnum";
   font-size: 16px;
-  background-image: none;
   transition: all 0.3s;
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
 .cdx-alert__title_input::placeholder {
@@ -112,17 +109,14 @@
 }
 
 .cdx-alert__desc_input--warning {
-  /* background: #fff9ef; */
   color: #cea46f;
 }
 
 .cdx-alert__desc_input--error {
-  /* background: #fff3f1; */
   color: #d28e86;
 }
 
 .cdx-alert__desc_input--success {
-  /* background: #f8fded; */
   color: #85a785;
 }
 
