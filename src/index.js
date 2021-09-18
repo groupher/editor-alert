@@ -208,13 +208,6 @@ export default class Alert {
     );
 
     this.api.listeners.on(
-      this.descEl,
-      "input",
-      (ev) => this.handleInlineMDShortcut(ev),
-      false
-    );
-
-    this.api.listeners.on(
       this.sideIcon,
       "click",
       (ev) => {
