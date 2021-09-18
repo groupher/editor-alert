@@ -48,6 +48,7 @@ export default class Alert {
     this.defaultTitle = config.title || Alert.DEFAULT_TITLE_PLACEHOLDER;
     this.defaultDesc = config.desc || Alert.DEFAULT_DESC_PLACEHOLDER;
 
+    this.containerEl = null;
     this.titleEl = null;
     this.descEl = null;
 
@@ -126,6 +127,10 @@ export default class Alert {
     return {
       baseClass: this.api.styles.block,
       wrapper: "cdx-alert",
+      wrapperWarning: "cdx-alert--warning",
+      wrapperError: "cdx-alert--error",
+      wrapperSuccess: "cdx-alert--success",
+
       sideIcon: "cdx-alert__sideicon",
       sideIconWarning: "cdx-alert__sideicon--warning",
       sideIconError: "cdx-alert__sideicon--error",
@@ -156,13 +161,19 @@ export default class Alert {
    * @returns {Element}
    */
   render() {
+    const typeName = capitalize(this.data.type);
     // const container = make('div', [this.CSS.baseClass, this.CSS.wrapper])
-    const container = make("div", [this.CSS.wrapper], {});
+    this.containerEl = make(
+      "div",
+      [this.CSS.wrapper, this.CSS[`wrapper${typeName}`]],
+      {}
+    );
     this.titleEl = make(
       "input",
-      [this.CSS.titleInput, this.CSS.titleInputWarning, this.CSS.title],
+      [this.CSS.titleInput, this.CSS[`titleInput${typeName}`], this.CSS.title],
       {
         value: this.data.title,
+        placeholder: "提示标题",
         "data-skip-plus-button": true,
       }
     );
@@ -172,20 +183,25 @@ export default class Alert {
       [
         this.CSS.baseClass,
         this.CSS.descInput,
-        this.CSS.descInputWarning,
+        this.CSS[`descInput${typeName}`],
         this.CSS.desc,
       ],
       {
         contentEditable: true,
         innerText: this.data.desc,
+        "data-placeholder": "提示内容",
         "data-skip-plus-button": true,
       }
     );
 
-    this.sideIcon = make("div", [this.CSS.sideIcon, this.CSS.sideIconWarning], {
-      innerHTML: WarningIcon,
-      "data-skip-plus-button": true,
-    });
+    this.sideIcon = make(
+      "div",
+      [this.CSS.sideIcon, this.CSS[`sideIcon${typeName}`]],
+      {
+        innerHTML: WarningIcon,
+        "data-skip-plus-button": true,
+      }
+    );
 
     this.api.listeners.on(
       this.descEl,
@@ -204,11 +220,11 @@ export default class Alert {
       false
     );
 
-    container.appendChild(this.titleEl);
-    container.appendChild(this.descEl);
-    container.appendChild(this.sideIcon);
+    this.containerEl.appendChild(this.titleEl);
+    this.containerEl.appendChild(this.descEl);
+    this.containerEl.appendChild(this.sideIcon);
 
-    return container;
+    return this.containerEl;
   }
 
   /**
@@ -298,6 +314,7 @@ export default class Alert {
       Success: SuccessIcon,
     };
 
+    this.containerEl.classList.add(this.CSS["wrapper" + typeName]);
     this.titleEl.classList.add(this.CSS["titleInput" + typeName]);
     this.descEl.classList.add(this.CSS["descInput" + typeName]);
     this.sideIcon.classList.add(this.CSS["sideIcon" + typeName]);
@@ -311,6 +328,10 @@ export default class Alert {
    *
    */
   clearColorClasses() {
+    this.containerEl.classList.remove(this.CSS.wrapperWarning);
+    this.containerEl.classList.remove(this.CSS.wrapperError);
+    this.containerEl.classList.remove(this.CSS.wrapperSuccess);
+
     this.titleEl.classList.remove(this.CSS.titleInputWarning);
     this.titleEl.classList.remove(this.CSS.titleInputError);
     this.titleEl.classList.remove(this.CSS.titleInputSuccess);
