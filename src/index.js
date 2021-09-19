@@ -28,12 +28,10 @@ import { capitalize } from "./utils";
  *
  * @typedef {object} WarningData
  * @description Alert Tool`s input and output data
- * @property {string} title - warning`s title
  * @property {string} desc - warning`s desc
  *
  * @typedef {object} WarningConfig
  * @description Alert Tool`s initial configuration
- * @property {string} title - placeholder to show in warning`s title input
  * @property {string} desc - placeholder to show in warning`s desc input
  */
 
@@ -49,11 +47,9 @@ export default class Alert {
     this.api = api;
     this.i18n = config.i18n || "en";
 
-    this.defaultTitle = config.title || Alert.DEFAULT_TITLE_PLACEHOLDER;
     this.defaultDesc = config.desc || Alert.DEFAULT_DESC_PLACEHOLDER;
 
     this.containerEl = null;
-    this.titleEl = null;
     this.descEl = null;
 
     this.settings = [
@@ -75,9 +71,8 @@ export default class Alert {
     ];
 
     this.data = {
-      title: data.title || this.defaultTitle,
-      desc: data.desc || this.defaultDesc,
       type: data.type || "warning",
+      desc: data.desc || this.defaultDesc,
     };
   }
   /**
@@ -100,16 +95,6 @@ export default class Alert {
    */
   static get enableLineBreaks() {
     return true;
-  }
-
-  /**
-   * Default placeholder for warning title
-   *
-   * @public
-   * @returns {string}
-   */
-  static get DEFAULT_TITLE_PLACEHOLDER() {
-    return this.i18n === "en" ? "Title" : "提示信息标题";
   }
 
   /**
@@ -144,12 +129,6 @@ export default class Alert {
       settingsButton: "cdx-settings-button",
       settingsButtonIcon: "cdx-settings-button-icon",
       settingsButtonActive: this.api.styles.settingsButtonActive,
-      title: "cdx-alert__title",
-
-      titleInput: "cdx-alert__title_input",
-      titleInputWarning: "cdx-alert__title_input--warning",
-      titleInputError: "cdx-alert__title_input--error",
-      titleInputSuccess: "cdx-alert__title_input--success",
 
       descInput: "cdx-alert__desc_input",
       descInputWarning: "cdx-alert__desc_input--warning",
@@ -171,15 +150,6 @@ export default class Alert {
       "div",
       [this.CSS.wrapper, this.CSS[`wrapper${typeName}`]],
       {}
-    );
-    this.titleEl = make(
-      "input",
-      [this.CSS.titleInput, this.CSS[`titleInput${typeName}`], this.CSS.title],
-      {
-        value: this.data.title,
-        placeholder: "//提示标题",
-        "data-skip-plus-button": true,
-      }
     );
     // textarea 会有各种问题，比如 backspace 会回到上一个 block, 比如 autosize 等等
     this.descEl = make(
@@ -217,7 +187,6 @@ export default class Alert {
       false
     );
 
-    this.containerEl.appendChild(this.titleEl);
     this.containerEl.appendChild(this.descEl);
     this.containerEl.appendChild(this.sideIcon);
 
@@ -315,7 +284,6 @@ export default class Alert {
     };
 
     this.containerEl.classList.add(this.CSS["wrapper" + typeName]);
-    this.titleEl.classList.add(this.CSS["titleInput" + typeName]);
     this.descEl.classList.add(this.CSS["descInput" + typeName]);
     this.sideIcon.classList.add(this.CSS["sideIcon" + typeName]);
 
@@ -331,10 +299,6 @@ export default class Alert {
     this.containerEl.classList.remove(this.CSS.wrapperWarning);
     this.containerEl.classList.remove(this.CSS.wrapperError);
     this.containerEl.classList.remove(this.CSS.wrapperSuccess);
-
-    this.titleEl.classList.remove(this.CSS.titleInputWarning);
-    this.titleEl.classList.remove(this.CSS.titleInputError);
-    this.titleEl.classList.remove(this.CSS.titleInputSuccess);
 
     this.descEl.classList.remove(this.CSS.descInputWarning);
     this.descEl.classList.remove(this.CSS.descInputError);
@@ -353,7 +317,6 @@ export default class Alert {
    */
   save(warningElement) {
     return Object.assign(this.data, {
-      title: this.titleEl.value,
       desc: this.descEl.innerHTML,
     });
   }
@@ -364,7 +327,6 @@ export default class Alert {
    */
   static get sanitize() {
     return {
-      title: {},
       desc: {},
     };
   }
