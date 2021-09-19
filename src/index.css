@@ -41,7 +41,7 @@
 
 .cdx-alert__sideicon {
   position: absolute;
-  top: 4px;
+  top: 2px;
   left: -40px;
   z-index: 1;
   width: 26px;
@@ -93,7 +93,7 @@
   width: 100%;
   outline: none;
   box-sizing: border-box;
-  padding: 5px 0;
+  padding: 2px 0;
 }
 
 .custom-setting-wrapper {
